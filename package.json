@@ -1,0 +1,46 @@
+{
+  "name": "spell",
+  "version": "1.0.0",
+  "description": "Spelling checker",
+  "homepage": "https://github.com/chbrown/spell",
+  "repository": "github:chbrown/spell",
+  "license": "MIT",
+  "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
+  "dependencies": {
+    "preact": "^8.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
+    "@babel/plugin-transform-react-jsx": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "ajv": "^6.6.2",
+    "babel-loader": "^8.0.5",
+    "bind-decorator": "^1.0.11",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragma": "h"
+        }
+      ]
+    ],
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "scripts": {
+    "prepare": "NODE_ENV=production webpack --config webpack.config.js",
+    "start": "webpack --config webpack.config.js --watch"
+  }
+}
