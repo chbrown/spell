@@ -3,6 +3,8 @@ import bind from 'bind-decorator'
 
 import {lookup} from './trie'
 
+import './style.css'
+
 import wordlist_trie from '../data/wordlist.trie.json'
 
 /**
