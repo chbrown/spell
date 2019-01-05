@@ -1,0 +1,38 @@
+body {
+  background-color: white;
+  font-size: 16px;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.33em 0;
+}
+
+main h1 {
+  min-height: 1.25em;
+}
+main.success h1:after, main.failure h1:after {
+  content: ':';
+}
+
+main h2 {
+  color: gray;
+  min-height: 1.5em;
+}
+main.failure h2 {
+  color: red;
+}
+main.success h2 {
+  color: green;
+}
+
+main a {
+  visibility: hidden;
+  font-size: 80%;
+  margin: 0 2em;
+}
+main.success a {
+  visibility: visible;
+}
+
+input {
+  font-size: 16px;
+}
