@@ -45,6 +45,7 @@
   },
   "scripts": {
     "prepare": "NODE_ENV=production webpack",
+    "publish": "npm run prepare && gh-pages -d dist -m \"Rebuild from $(git rev-parse --short HEAD)\"",
     "start": "webpack --watch"
   }
 }
