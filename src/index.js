@@ -1,5 +1,5 @@
-import {h, render, Component} from 'preact'
-import bind from 'bind-decorator'
+import {h, render} from 'preact'
+import {useState} from 'preact/hooks'
 
 import {lookup} from './trie'
 
@@ -38,36 +38,30 @@ function successName(success) {
   return 'empty'
 }
 
-class WordLookup extends Component {
-  constructor() {
-    super()
-    this.state = {word: ''}
+function WordLookup() {
+  const [word, setWord] = useState('')
+  const onChange = ev => {
+    const new_word = ev.target.value.toLowerCase()
+    setWord(new_word)
   }
-  @bind
-  onChange(ev) {
-    const word = ev.target.value.toLowerCase()
-    this.setState({word})
-  }
-  render(props, {word}) {
-    // skip lookup if word is empty
-    const success = word ? lookup(word, wordlist_trie) : null
-    return (
-      <main id="app" className={successName(success)}>
-        <h1>
-          <code>{word}</code>
-        </h1>
-        <h2>
-          {successMessage(success)}
-          <small>
-            <a href={definitionLink(word)} target="_new" rel="noopener">define</a>
-          </small>
-        </h2>
-        <div>
-          <input type="text" onKeyUp={this.onChange} value={word} autofocus />
-        </div>
-      </main>
-    )
-  }
+  // skip lookup if word is empty
+  const success = word ? lookup(word, wordlist_trie) : null
+  return (
+    <main id="app" className={successName(success)}>
+      <h1>
+        <code>{word}</code>
+      </h1>
+      <h2>
+        {successMessage(success)}
+        <small>
+          <a href={definitionLink(word)} target="_new" rel="noopener">define</a>
+        </small>
+      </h2>
+      <div>
+        <input type="text" onKeyUp={onChange} value={word} autofocus />
+      </div>
+    </main>
+  )
 }
 
 const appNode = document.getElementById('app')
