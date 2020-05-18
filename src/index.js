@@ -52,7 +52,7 @@ class WordLookup extends Component {
     // skip lookup if word is empty
     const success = word ? lookup(word, wordlist_trie) : null
     return (
-      <main className={successName(success)}>
+      <main id="app" className={successName(success)}>
         <h1>
           <code>{word}</code>
         </h1>
@@ -70,6 +70,6 @@ class WordLookup extends Component {
   }
 }
 
-const containerNode = document.body
 const appNode = document.getElementById('app')
+const containerNode = appNode.parentNode //=> document.body
 render(<WordLookup />, containerNode, appNode)
